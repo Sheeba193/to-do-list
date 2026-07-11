@@ -148,8 +148,12 @@ header p{
 
     margin-right: 10px;
 }
-
 .todo-checkbox{
+    opacity: 0;
+    position: absolute;
+}
+
+.checkmark{
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -159,3 +163,21 @@ header p{
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
+.todo-checkbox:checked + .checkmark{
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.todo-checkbox:checked + .checkmark::after{
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--light);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
