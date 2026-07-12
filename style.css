@@ -214,6 +214,8 @@ header p{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    
     text-align: center;
     color: var(--gray);
     padding: 40px 0;
@@ -246,4 +248,10 @@ footer{
 
 #clear-completed:hover{
     color: var(--danger);
+}
+
+#add-task{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
