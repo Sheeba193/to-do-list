@@ -14,3 +14,26 @@ let currentFilter = 'all';
 addTaskBtn.addEventListener('click', () => {
     addTodo(taskBtn.value);
 });
+
+// Add task on pressing Enter key
+taskInput.addEventListener('keypress', (e) => { 
+    if (e.key === 'Enter') {
+        addTodo(taskInput.value);
+        taskInput.value = '';
+    }
+});
+
+  
+clearCompletedBtn.addEventListener('click', () => {
+    todos = todos.filter(todo => !todo.completed);
+    renderTodos();
+});
+
+filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+        currentFilter = filter.dataset.filter;
+        renderTodos();
+    });
+});
+
+
