@@ -37,3 +37,15 @@ filters.forEach(filter => {
 });
 
 
+// Function to add a new todo
+function addTodo(task) {
+    if (task.trim() === '') return;
+
+    const newTodo = {
+        id: Date.now(),
+        task: task,
+        completed: false
+    };
+    todos.push(newTodo);
+    renderTodos();
+}
