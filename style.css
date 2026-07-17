@@ -245,6 +245,14 @@ footer{
     color: var(--gray);
 }
 
+#clear-completed{
+    background-color: transparent;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
 
 #clear-completed:hover{
     color: var(--danger);
