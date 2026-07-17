@@ -75,13 +75,8 @@ No installation or additional dependencies are required.
 
 ## Screenshot
 
-Add a screenshot of the application here.
+<img width="904" height="783" alt="image" src="https://github.com/user-attachments/assets/a8e65de0-4c3a-4bf8-9147-238c0c09f472" />
 
-```text
-assets/screenshot.png
-```
-
----
 
 ## Learning Objectives
 
