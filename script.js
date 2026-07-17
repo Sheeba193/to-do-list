@@ -119,9 +119,22 @@ function renderTodos() {
 
 function clearCompleted() {}
 
-function toggleTodo(id) {}
+function toggleTodo(id) {
+    todos = todos.map(todo => {
+        if (todo.id === id) {
+            return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+    });
+    saveTodos();
+    renderTodos();
+}
 
-function deleteTodo(id) {}
+function deleteTodo(id) {
+    todos = todos.filter(todo => todo.id !== id);
+    saveTodos();
+    renderTodos();
+}
 
 function loadTodos() {
     const storedTodos = localStorage.getItem('todos');
