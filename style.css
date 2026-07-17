@@ -122,7 +122,7 @@ header p{
     border-bottom: 2px solid var(--primary-color);
 }
 
-.todo-container{
+.todos-container{
     padding: 20px 0;
     max-height: 300px;
     overflow-y: auto; 
