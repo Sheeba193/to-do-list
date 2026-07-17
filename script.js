@@ -17,35 +17,57 @@ addTaskBtn.addEventListener('click', () => {
 
 // Add task on pressing Enter key
 taskInput.addEventListener('keypress', (e) => { 
-    if (e.key === 'Enter') {
-        addTodo(taskInput.value);
-        taskInput.value = '';
-    }
+    if (e.key === 'Enter') addTodo(taskInput.value);
+    
 });
 
-  
-clearCompletedBtn.addEventListener('click', () => {
-    todos = todos.filter(todo => !todo.completed);
-    renderTodos();
-});
+  // Clear completed tasks
+clearCompletedBtn.addEventListener('click', clearCompleted);
 
-filters.forEach(filter => {
-    filter.addEventListener('click', () => {
-        currentFilter = filter.dataset.filter;
-        renderTodos();
-    });
-});
+function addTodo(text){
+    if (text.trim() === '') return;
 
-
-// Function to add a new todo
-function addTodo(task) {
-    if (task.trim() === '') return;
-
-    const newTodo = {
+    const todo = {
         id: Date.now(),
-        task: task,
+        text: text,
         completed: false
     };
-    todos.push(newTodo);
-    renderTodos();
+    todos.push(todo);
+    saveTodos();
+    // renderTodos();
 }
+
+function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+    updateItemsCount();
+    checkEmptyState();
+}
+
+function updateItemsCount() {
+    const uncompletedTodos = todos.filter(todo => !todo.completed);
+    itemsLeft.textContent = `${uncompletedTodos.length} item${
+    uncompletedTodos.length !== 1 ? 's' : ''                                    
+    } left`;
+}
+
+function checkEmptyState() {
+    const filteredTodos = filterTodos(currentFilter);
+    if (filteredTodos.length === 0) {
+        emptyState.classList.remove('hidden');
+    } else {
+        emptyState.classList.add('hidden');
+    }
+}
+
+function filterTodos(filter) {
+    switch (filter) {
+        case 'active':
+            return todos.filter(todo => !todo.completed);
+        case 'completed':
+            return todos.filter(todo => todo.completed);
+        default:
+            return todos;
+    }
+}
+
+function clearCompleted() {}
