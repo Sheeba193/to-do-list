@@ -12,7 +12,7 @@ let todos = [];
 let currentFilter = 'all';
 
 addTaskBtn.addEventListener('click', () => {
-    addTodo(taskBtn.value);
+    addTodo(taskInput.value);
 });
 
 // Add task on pressing Enter key
@@ -33,8 +33,11 @@ function addTodo(text){
         completed: false
     };
     todos.push(todo);
+
+    taskInput.value = ''; // Clear input field
+
     saveTodos();
-    // renderTodos();
+    renderTodos();
 }
 
 function saveTodos() {
@@ -45,14 +48,14 @@ function saveTodos() {
 
 function updateItemsCount() {
     const uncompletedTodos = todos.filter(todo => !todo.completed);
-    itemsLeft.textContent = `${uncompletedTodos.length} item${
-    uncompletedTodos.length !== 1 ? 's' : ''                                    
+    itemsLeft.textContent = `${uncompletedTodos?.length} item${
+    uncompletedTodos?.length !== 1 ? 's' : ''                                    
     } left`;
 }
 
 function checkEmptyState() {
     const filteredTodos = filterTodos(currentFilter);
-    if (filteredTodos.length === 0) {
+    if (filteredTodos?.length === 0) {
         emptyState.classList.remove('hidden');
     } else {
         emptyState.classList.add('hidden');
