@@ -118,3 +118,20 @@ function renderTodos() {
 }
 
 function clearCompleted() {}
+
+function toggleTodo(id) {}
+
+function deleteTodo(id) {}
+
+function loadTodos() {
+    const storedTodos = localStorage.getItem('todos');
+    if (storedTodos) {
+        todos = JSON.parse(storedTodos);
+    }
+    renderTodos();
+
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    loadTodos();
+});
