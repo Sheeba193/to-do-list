@@ -117,7 +117,11 @@ function renderTodos() {
     });
 }
 
-function clearCompleted() {}
+function clearCompleted() {
+    todos = todos.filter(todo => !todo.completed);
+    saveTodos();
+    renderTodos();
+}
 
 function toggleTodo(id) {
     todos = todos.map(todo => {
@@ -145,6 +149,27 @@ function loadTodos() {
 
 }
 
+filters.forEach(filter => {
+    filter.addEventListener('click', () => {
+        setActiveFilter(filter.getAttribute('data-filter'));
+    });
+});
+
+function setActiveFilter(filter) {
+    currentFilter = filter;
+    
+    filters.forEach((item) => {
+        if(item.getAttribute('data-filter') === filter) {
+        item.classList.add('active');
+        }else {
+            item.classList.remove('active');
+        }
+    });
+
+    renderTodos();
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     loadTodos();
+    updateItemsCount();
 });
