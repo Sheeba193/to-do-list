@@ -226,7 +226,7 @@ header p{
     opacity: 0.7;
 }
 
-hidden{
+.hidden{
     display: none;
 }
 
